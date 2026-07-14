@@ -1,8 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using safeHouseBackend.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+//Configuração para o banco de dados. Indica o uso do SQLite e salvo localmente no arquivo chamado safehouse.db
+builder.Services.AplicativoDbContext<AplicativoDbContext>(Options => Options.UseSqlite("Data Source=safehouse.db"));
+builder.Services.AddControllers();
 
 var app = builder.Build();
 

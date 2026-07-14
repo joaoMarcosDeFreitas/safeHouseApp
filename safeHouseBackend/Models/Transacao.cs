@@ -1,6 +1,6 @@
 namespace safeHouseBackend.Models
 {
-    //cria o modelo Transação que é a entidade que representa uma transação financeira.
+    //cria a classe transação
     public class Transacao
     {
         //id da transação
@@ -13,6 +13,18 @@ namespace safeHouseBackend.Models
         public decimal Valor { get; set; }
         //tipo da transação
         public string Tipo { get; set; }
-        public Pessoa Pessoa { get; set; }
+        //id da pessoa associada a transacao
+        public int PessoaId { get; set; }
+
+        //construtor
+        public Transacao(int id, string nome, string descricao, decimal valor, string tipo, int pessoaId)
+        {
+            this.Id = id;
+            this.Nome = nome;
+            this.Descricao = descricao;
+            this.Valor = valor;
+            this.Tipo = tipo;
+            this.PessoaId = pessoaId;
+        }
     }
 }

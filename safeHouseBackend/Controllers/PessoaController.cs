@@ -18,7 +18,7 @@ namespace safeHouseBackend.Controllers
 
         //define qual o tipo de requisição deste método. Neste caso é um get all de todas as pessoas.
         [HttpGet]
-        public async Task<ActionResult<List<Pessoa>>> BuscarTodasAsPessoas()
+        public async Task<ActionResult<IEnumerable<Pessoa>>> BuscarTodasAsPessoas()
         {
             //busca as pessoas de forma assincrona com await
             var pessoas = await _context.Pessoas.ToListAsync();

@@ -10,7 +10,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("front", policy =>
     {
         //define a politica, possibilitando enviar JSON, tokens etc E permite solicitar qualquer método.
-        policy.WithOrigins("http://localhost:5000", "http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
+        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
     });
 });
 
@@ -20,9 +20,13 @@ builder.Services.AddOpenApi();
 
 //Configuração para o banco de dados. Indica o uso do SQLite e salvo localmente no arquivo chamado safehouse.db
 builder.Services.AddDbContext<AplicativoDbContext>(options => options.UseSqlite("Data Source=safehouse.db"));
+//registra os controllers
 builder.Services.AddControllers();
 
 var app = builder.Build();
+
+//Ativando o CORS usado acima.
+app.UseCors("front");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -30,7 +34,8 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseHttpsRedirection();
+//linha abaixo deve ser comentada para evitar forçar uso de HTTPS e poder usar HTTP
+//app.UseHttpsRedirection();
 
 var summaries = new[]
 {
@@ -50,6 +55,9 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 })
 .WithName("GetWeatherForecast");
+
+//adiciona o mapeador do controller
+app.MapControllers();
 
 app.Run();
 

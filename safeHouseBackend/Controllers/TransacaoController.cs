@@ -18,7 +18,7 @@ namespace safeHouseBackend.Controllers
 
         //define qual o tipo de requisição deste método. Neste caso é um get all de todas as transações.
         [HttpGet]
-        public async Task<ActionResult<List<Transacao>>> BuscarTodasAsTransacoes()
+        public async Task<ActionResult<IEnumerable<Transacao>>> BuscarTodasAsTransacoes()
         {
             //busca as transações de forma assincrona com await
             var transacoes = await _context.Transacoes.ToListAsync();

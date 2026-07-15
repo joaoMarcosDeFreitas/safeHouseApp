@@ -19,7 +19,7 @@ export default function Home() {
   
   //une a barra lateral com o fundo e o conteúdo da página que o usuário está.
   return (
-    <div className="bg-[#08002B] min-h-[100vh]">
+    <div className="bg-[#08002B] min-h-[100vh] ">
       <div className="flex flex-row">
         {/* Barra lateral fixa. Junto dela contém o atributo ao clicar que recebe a função 'definirTela' que define o valor de 'telaAtual' */}
         <BarraLateral aoClicar={definirTela}/>

@@ -14,8 +14,7 @@ export function RegistrarPessoa() {
 
     //função para lidar com o envio do formulário. 'e' é o evento que é uma variável do tipo SubmitEvent, o tipo genérico é usado para especificar como SubmitEvent vai definir seus parâmetros, ex: só é possível usar e.currentTarget, quando definimos que SubmitEvent tem o tipo genérico HTMLFormElement (ou seja é um formulário que estamos lidando)
     const respostaForm = (e: SubmitEvent<HTMLFormElement>) => {
-        //impede formulário de recarregar a página ao ser enviado
-        e.preventDefault();
+        //não deve ser retirado o recarregamento da página, para tentar minimizar a possiobilidade do usuario clicar várias vezes no mesmo botão
 
         //buscar dados do evento
         const dados = new FormData(e.currentTarget);
@@ -36,6 +35,15 @@ export function RegistrarPessoa() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(pessoaNova)
+        }).then(resposta => {
+            //verifica se a resposa foi ok ou se deu erro
+            if(resposta.ok) {
+                //alerta na tela indicando que deu certo
+                alert("Pessoa registrada com sucesso!");
+            } else {
+                //alerta na tela indicando que deu errado
+                alert("Erro ao registrar pessoa, tente novamente.");
+            }
         }).catch(erro => {
             //salva resposta de erro da requisição
             definirPessoaErro(erro);

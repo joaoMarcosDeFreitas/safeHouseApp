@@ -12,7 +12,7 @@ export function CartaoPessoaCompleto({ nome, idade, despesas, receitas }: { nome
     })
 
     return(
-        <div className="w-[300px] h-[120px] rounded-[15px] bg-[#D9D9D9] flex flex-col justify-center pl-[1%]">
+        <div className="w-[300px] h-[120px] rounded-[15px] bg-[#D9D9D9] flex flex-col justify-center pl-[1%] border-[1px] border-black">
             <h3 className="font-[Josefin_Sans] text-[14px] text-[#0B0029] font-regular tracking-[0.085rem]"><b>Nome:</b> {nome}</h3>
             <h3 className="font-[Josefin_Sans] text-[14px] text-[#0B0029] font-regular tracking-[0.085rem]"><b>Idade:</b> {idade}</h3>
             <h3 className="font-[Josefin_Sans] text-[14px] text-[#0B0029] font-regular tracking-[0.085rem]"><b>Receitas:</b> {resultado.format(receitas)}</h3>

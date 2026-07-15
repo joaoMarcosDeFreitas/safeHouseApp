@@ -19,20 +19,22 @@ export default function Home() {
   
   //une a barra lateral com o fundo e o conteúdo da página que o usuário está.
   return (
-    <div className="flex flex-">
-      {/* Barra lateral fixa. Junto dela contém o atributo ao clicar que recebe a função 'definirTela' que define o valor de 'telaAtual' */}
-      <BarraLateral aoClicar={definirTela}/>
+    <div className="bg-[#08002B] min-h-[100vh]">
+      <div className="flex flex-row">
+        {/* Barra lateral fixa. Junto dela contém o atributo ao clicar que recebe a função 'definirTela' que define o valor de 'telaAtual' */}
+        <BarraLateral aoClicar={definirTela}/>
       
-      {/* div do conteúdo da página que o usuário está */}
-      <div className="w-[100vw] bg-[#08002B]">
+        {/* div do conteúdo da página que o usuário está */}
+        <div className="w-[100vw]">
 
-        {telaAtual === "registrarPessoa" && <RegistrarPessoa/>}
-        {telaAtual === "excluirPessoa" && <ExcluirPessoa/>}
-        {telaAtual === "registrarTransacao" && <RegistrarTransacao/>}
-        {telaAtual === "consultarTotais" && <ConsultarTotais aoClicar={definirTela} receitas={5600000000} despesas={4200000000}/>}
-        {telaAtual === "menuInicial" && <MenuInicial aoClicar={definirTela}/>}
-        {telaAtual === "todasTransacoes" && <TodasAsTransacoes/>}
-        {telaAtual === "todasPessoas" && <TodasAsPessoas/>}
+          {telaAtual === "registrarPessoa" && <RegistrarPessoa/>}
+          {telaAtual === "excluirPessoa" && <ExcluirPessoa/>}
+          {telaAtual === "registrarTransacao" && <RegistrarTransacao/>}
+          {telaAtual === "consultarTotais" && <ConsultarTotais aoClicar={definirTela} receitas={5600000000} despesas={4200000000}/>}
+          {telaAtual === "menuInicial" && <MenuInicial aoClicar={definirTela}/>}
+          {telaAtual === "todasTransacoes" && <TodasAsTransacoes/>}
+          {telaAtual === "todasPessoas" && <TodasAsPessoas/>}
+        </div>
       </div>
     </div>
   );

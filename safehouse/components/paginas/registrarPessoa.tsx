@@ -4,8 +4,8 @@ import { SubmitEvent } from "react";
 //importa botão de registro
 import { BotaoRegistrar } from "../ui/botaoRegistrar";
 
-//importa a interface pessoa
-import { Pessoa } from "@/modelos/Pessoa";
+//importa a requisição ao backend com post de pessoa.
+import { RegistrarPessoaFunc } from "@/funcionalidades/pessoas/registrarPessoaFunc";
 
 //componente de página para registro de pessoa.
 export function RegistrarPessoa() {
@@ -17,23 +17,12 @@ export function RegistrarPessoa() {
         //buscar dados do evento
         const dados = new FormData(e.currentTarget);
 
+        //busca nome e idade informados e salva
         const nome = dados.get("nome") || "";
         const idade = dados.get("idade") || "";
 
-        const pessoaNova = {
-            "nome": nome,
-            "idade": idade
-        }
-
-        //URL do backend para requisição
-        fetch("http://localhost:5004/api/pessoa", {
-            //define o metodo POST
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(pessoaNova)
-        }).then(resposta => {
+        //chama a requisição de registrar pessoa ela retorna o mesmo retorno do método fetch, usando o 'then' podemos garantir que a resposta seja tratada
+        RegistrarPessoaFunc(nome.toString(), Number.parseInt(idade.toString())).then((resposta) => {
             //verifica se a resposa foi ok ou se deu erro
             if(resposta.ok) {
                 //alerta na tela indicando que deu certo

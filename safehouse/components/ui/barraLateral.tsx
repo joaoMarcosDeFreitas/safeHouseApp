@@ -5,7 +5,7 @@ import { BotaoBarraLateral } from "./botaoBarraLateral"
 export function BarraLateral({ aoClicar }: { aoClicar: (botaoClicado:string) => void }) {
     return(
         //define e estiliza a barra lateral e seus componentes
-        <aside className="flex flex-col w-[15vw] h-[100vh] bg-[#2D1D71] items-center gap-[10%]">
+        <aside className="flex flex-col w-[15vw] h-[100vh] bg-[#2D1D71] items-center gap-[10%] rounded-b-[25px]">
             {/* define a logo usada na barra lateral */}
             <img src="/images/logo.png" width={85} height={98} alt="Logo da safehouse, uma casa roxa, com telhado verde escuro, no meio da casa há uma janela com símbolo de cifrão $, abaixo está escrito em pixelArt 'Safe House'" className="mt-[25px]"/>
 

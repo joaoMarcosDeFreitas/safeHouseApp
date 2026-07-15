@@ -3,6 +3,17 @@ using safeHouseBackend.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//adicionando a possibilidade de solicitação a API pelo loccalhost (evitar problema de CORS)
+builder.Services.AddCors(options =>
+{
+    //cria politica de cors
+    options.AddPolicy("front", policy =>
+    {
+        //define a politica, possibilitando enviar JSON, tokens etc E permite solicitar qualquer método.
+        policy.WithOrigins("http://localhost:5000", "http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();

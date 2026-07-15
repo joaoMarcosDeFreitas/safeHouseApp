@@ -6,11 +6,10 @@ import { BotaoRegistrar } from "../ui/botaoRegistrar";
 
 //componente de página para registro de tgransação.
 export function RegistrarTransacao() {
+    //não deve ser retirado o recarregamento da página, para tentar minimizar a possiobilidade do usuario clicar várias vezes no mesmo botão
 
     //função para lidar com o envio do formulário. 'e' é o evento que é uma variável do tipo SubmitEvent, o tipo genérico é usado para especificar como SubmitEvent vai definir seus parâmetros, ex: só é possível usar e.currentTarget, quando definimos que SubmitEvent tem o tipo genérico HTMLFormElement (ou seja é um formulário que estamos lidando)
     const respostaForm = (e: SubmitEvent<HTMLFormElement>) => {
-        //impede formulário de recarregar a página ao ser enviado
-        e.preventDefault();
 
         //busca os dados do formulário enviado
         const dados = new FormData(e.currentTarget);
@@ -21,8 +20,21 @@ export function RegistrarTransacao() {
         const tipo = dados.get("tipo") || "";
         const pessoa = dados.get("pessoa") || "";
 
+        const transacaoNova = {
+            "nome": nome,
+            "descricao": descricao,
+            "valor": descricao,
+            "tipo": descricao,
+            "pessoaId": pessoa,
+        }
 
 
+        fetch("http://localhost:5004/api/transacao", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
     }
 
     return(
@@ -43,7 +55,7 @@ export function RegistrarTransacao() {
                 {/* Dropdown para escolher a pessoa responsável */}
                 <select name="pessoa" className="font-[Josefin_Sans] text-white font-light tracking-[0.085rem]">
                     <option className="bg-[#08002B]" value="none" disabled>Escolha a pessoa</option>
-                    <option className="bg-[#08002B]" value="Johnny">Johnny</option>
+                    
                 </select>  
                 <BotaoRegistrar/>
             </form> 

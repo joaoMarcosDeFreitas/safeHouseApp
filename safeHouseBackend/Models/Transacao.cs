@@ -16,7 +16,7 @@ namespace safeHouseBackend.Models
         //id da pessoa associada a transacao
         public int PessoaId { get; set; }
         //atributo do tipo Pessoa, para poder referenciar ao modelo Pessoa
-        public Pessoa Pessoa { get; set; }
+        public Pessoa? Pessoa { get; set; }
 
         //construtor
         public Transacao(int id, string nome, string descricao, decimal valor, string tipo, int pessoaId)

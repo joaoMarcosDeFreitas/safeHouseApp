@@ -28,6 +28,7 @@ namespace safeHouseBackend.Controllers
         }
 
         //Define qual o tipo de requisição deste método junto com o path variable. Neste caso é um get com path variable {id} -> ID da transação.
+        [HttpGet("{id}")]
         public async Task<ActionResult<Transacao>> BuscarTransacao(int id)
         {
             //busca a transação de forma assincrona com await

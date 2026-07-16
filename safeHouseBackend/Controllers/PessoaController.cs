@@ -78,6 +78,30 @@ namespace safeHouseBackend.Controllers
             return Ok(pessoaNova);
         }
 
+        //Define qual o tipo de requisição deste método, pede um body atualizar no BD. Neste caso é um update que atualiza a pessoa.
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Pessoa>> AtualizarPessoaReceitasEDespesas(int id, [FromBody] Pessoa pessoaNova)
+        {
+            //pega a pessoa do BD para atualização
+            var pessoa = _context.Pessoas.Find(id);
+
+            //se a pessoa for nula (não achou no BD) retorna not found para avisar que não achou
+            if (pessoa == null)
+            {
+                return NotFound();
+            }
+
+            //altera apenas receitas e despesas
+            pessoa.Receitas = pessoaNova.Receitas;
+            pessoa.Despesas = pessoaNova.Despesas;
+
+            //espera salvar as mudanças feitas
+            await _context.SaveChangesAsync();
+
+            //retorna status ok
+            return Ok();
+        }
+
         //Define qual o tipo de requisição deste método junto com o path variable. Neste caso é um delete com path variable {id} -> ID da pessoa.
         [HttpDelete("{id}")]
         public async Task<ActionResult> ExcluirPessoa(int id)

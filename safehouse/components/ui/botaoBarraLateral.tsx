@@ -1,4 +1,4 @@
-//cria botão do menu lateral com parâmetro para texto do mesmo. Além disso, também há o parâmetro clicado que condiz com uma função de click do usuário neste mesmo botão.
+//cria botão do menu lateral com parâmetro para texto do mesmo. Além disso, o parâmetro função aoClicar é usado para dar vida ao onClick do button chamando funções em cadeia -> leia 'barraLateral.tsx' para entender melhot.
 export function BotaoBarraLateral({ texto, aoClicar } : { texto: string, aoClicar: () => void }) {
     return(
         //ativa a função onClick, definindo então o valor de 'telaAtual' para o que foi passado como parâmetro no componente da barra lateral.

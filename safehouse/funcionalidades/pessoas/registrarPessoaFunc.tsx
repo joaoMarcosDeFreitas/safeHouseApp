@@ -1,4 +1,5 @@
-//funcionalidade de requisição para registrar pessoa, serve para deixar organizado e unificado em um lugar (reaproveitável)
+//componente para registrar pessoa, usado separadamente para reutilzação e organização
+//async define o método como assincrono
 export async function RegistrarPessoaFunc(nome: string, idade: number, receitas: number, despesas: number) {
     //define o corpo da requisição que é a pessoa a ser registrada (deve ter suas chaves exatamente igual ao banco de dados)
     const pessoaNova = {
@@ -15,7 +16,7 @@ export async function RegistrarPessoaFunc(nome: string, idade: number, receitas:
     }
 
     //URL do backend para requisição
-    const respostaFunc = fetch("http://localhost:5004/api/pessoa", {
+    const respostaFunc = await fetch("http://localhost:5004/api/pessoa", {
         //define o metodo POST
         method: "POST",
         //define o conteúdo do header (INDICA PARA O .NET QUE É UM CONTEUDO JSON)
@@ -26,5 +27,6 @@ export async function RegistrarPessoaFunc(nome: string, idade: number, receitas:
         body: JSON.stringify(pessoaNova)
         });
 
+    //retorna a requisição (para uso to 'then')
     return respostaFunc;
 }

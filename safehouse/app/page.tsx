@@ -9,8 +9,6 @@ import { ExcluirPessoa } from "@/components/paginas/excluirPessoa";
 import { RegistrarTransacao } from "@/components/paginas/registrarTransacao";
 import { ConsultarTotais } from "@/components/paginas/consultarTotais";
 import { MenuInicial } from "@/components/paginas/menuInicial";
-import { TodasAsTransacoes } from "@/components/paginas/todasAsTransacoes";
-import { TodasAsPessoas } from "@/components/paginas/todasAsPessoas";
 
 export default function Home() {
   
@@ -30,10 +28,8 @@ export default function Home() {
           {telaAtual === "registrarPessoa" && <RegistrarPessoa/>}
           {telaAtual === "excluirPessoa" && <ExcluirPessoa/>}
           {telaAtual === "registrarTransacao" && <RegistrarTransacao/>}
-          {telaAtual === "consultarTotais" && <ConsultarTotais aoClicar={definirTela} receitas={5600000000} despesas={4200000000}/>}
-          {telaAtual === "menuInicial" && <MenuInicial aoClicar={definirTela}/>}
-          {telaAtual === "todasTransacoes" && <TodasAsTransacoes/>}
-          {telaAtual === "todasPessoas" && <TodasAsPessoas/>}
+          {telaAtual === "consultarTotais" && <ConsultarTotais/>}
+          {telaAtual === "menuInicial" && <MenuInicial/>}
         </div>
       </div>
     </div>

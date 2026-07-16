@@ -12,7 +12,7 @@ export function RegistrarPessoa() {
 
     //função para lidar com o envio do formulário. 'e' é o evento que é uma variável do tipo SubmitEvent, o tipo genérico é usado para especificar como SubmitEvent vai definir seus parâmetros, ex: só é possível usar e.currentTarget, quando definimos que SubmitEvent tem o tipo genérico HTMLFormElement (ou seja é um formulário que estamos lidando)
     const respostaForm = (e: SubmitEvent<HTMLFormElement>) => {
-        //não deve ser retirado o recarregamento da página, para tentar minimizar a possiobilidade do usuario clicar várias vezes no mesmo botão
+        e.preventDefault();
 
         //buscar dados do evento
         const dados = new FormData(e.currentTarget);
@@ -22,7 +22,7 @@ export function RegistrarPessoa() {
         const idade = dados.get("idade") || "";
 
         //chama a requisição de registrar pessoa ela retorna o mesmo retorno do método fetch, usando o 'then' podemos garantir que a resposta seja tratada
-        RegistrarPessoaFunc(nome.toString(), Number.parseInt(idade.toString())).then((resposta) => {
+        RegistrarPessoaFunc(nome.toString(), Number.parseInt(idade.toString()), 0, 0).then((resposta) => {
             //verifica se a resposa foi ok ou se deu erro
             if(resposta.ok) {
                 //alerta na tela indicando que deu certo

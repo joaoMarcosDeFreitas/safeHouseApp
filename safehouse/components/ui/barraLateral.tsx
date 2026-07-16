@@ -1,7 +1,7 @@
 //importa o componente botão para compor a barra.
 import { BotaoBarraLateral } from "./botaoBarraLateral"
 
-//cria a barra lateral fixa para todas áreas da interface. Possui um parâmetro do tipo função, que serve para usar a função 'definirTela' para mudar o valor de 'telaAtual'
+//cria a barra lateral fixa para todas áreas da interface. Possui um parâmetro do tipo função, que serve para usar a função 'definirTela' para mudar o valor de 'telaAtual' o valor vem exatamente do componente botaoBarraLateral que possui um parametro que é uma função que pede um parâmetro que é uma string (passada abaixo no componente).
 export function BarraLateral({ aoClicar }: { aoClicar: (botaoClicado:string) => void }) {
     return(
         //define e estiliza a barra lateral e seus componentes

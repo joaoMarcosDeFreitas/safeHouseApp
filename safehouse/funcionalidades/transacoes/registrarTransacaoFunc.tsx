@@ -25,7 +25,7 @@ export async function RegistrarTransacaoFunc(nome: string, descricao: string, va
     //busca a pessoa escolhida na transação
     const pessoaEscolhida = await BuscarPessoa(pessoaId);
     //verifica com a coluna do BD se a pessoa pode ter receita
-    if (!pessoaEscolhida.podeTerReceita) {
+    if (!pessoaEscolhida.podeTerReceita && tipo.toLowerCase().trim() === "receita") {
         alert("Não pode registrar transações de receita para menores de 18 anos.");
         return;
     }

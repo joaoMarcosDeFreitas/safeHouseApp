@@ -20,7 +20,7 @@ namespace safeHouseBackend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Pessoa>>> BuscarTodasAsPessoas()
         {
-            //busca as pessoas de forma assincrona com await
+            //busca as pessoas de forma assincrona com await -> espera a requisição ser feita
             var pessoas = await _context.Pessoas.ToListAsync();
             
             //retorna a busca feita
@@ -32,7 +32,7 @@ namespace safeHouseBackend.Controllers
         public async Task<ActionResult<Pessoa>> BuscarPessoa(int id)
         {
 
-            //busca a pessoa de forma assincrona com await
+            //busca a pessoa de forma assincrona com await -> espera a requisição ser feita
             var pessoa = await _context.Pessoas.FindAsync(id);
 
             // verifia se a busca foi encontrada ou não
@@ -114,7 +114,7 @@ namespace safeHouseBackend.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> ExcluirPessoa(int id)
         {
-            //primeiro busca a pessoa no BD
+            //primeiro busca a pessoa no BD de forma assinrona com await -> espera a requisição ser feita
             var pessoa = await _context.Pessoas.FindAsync(id);
 
             //verifica se a pessoa existe

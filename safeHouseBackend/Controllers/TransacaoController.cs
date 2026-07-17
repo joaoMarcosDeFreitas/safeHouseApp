@@ -20,7 +20,7 @@ namespace safeHouseBackend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Transacao>>> BuscarTodasAsTransacoes()
         {
-            //busca as transações de forma assincrona com await
+            //busca as transações de forma assincrona com await -> espera a requisição ser feita
             var transacoes = await _context.Transacoes.ToListAsync();
 
             //retorna a busca feita
@@ -31,7 +31,7 @@ namespace safeHouseBackend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Transacao>> BuscarTransacao(int id)
         {
-            //busca a transação de forma assincrona com await
+            //busca a transação de forma assincrona com await -> espera a requisição ser feita
             var transacao = await _context.Transacoes.FindAsync(id);
 
             //Verifica se a busca foi encontrada ou não

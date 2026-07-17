@@ -15,7 +15,7 @@ namespace safeHouseBackend.Models
         public string Tipo { get; set; }
         //id da pessoa associada a transacao
         public int PessoaId { get; set; }
-        //atributo do tipo Pessoa, para poder referenciar ao modelo Pessoa
+        //atributo do tipo Pessoa, para poder referenciar ao modelo Pessoa -> permite ser nulo para que não seja obrigatório no front-end
         public Pessoa? Pessoa { get; set; }
 
         //construtor

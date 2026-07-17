@@ -1,9 +1,10 @@
+//importa as tecnologias usadas
 using Microsoft.EntityFrameworkCore;
 using safeHouseBackend.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//adicionando a possibilidade de solicitação a API pelo loccalhost (evitar problema de CORS)
+//adicionando a possibilidade de solicitação a API por qualquer lugar (evitar problema de CORS) -> nesse caso de projeto simples sem uso real de usuarios
 builder.Services.AddCors(options =>
 {
     //cria politica de cors

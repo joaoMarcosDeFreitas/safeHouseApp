@@ -13,7 +13,7 @@ import { MenuInicial } from "@/components/paginas/menuInicial";
 export default function Home() {
   
   //inicia o state com a página inicial
-  const [telaAtual, definirTela] = useState("menuInicial");
+  const [ telaAtual, definirTela ] = useState<string>("menuInicial");
   
   //une a barra lateral com o fundo e o conteúdo da página que o usuário está.
   return (

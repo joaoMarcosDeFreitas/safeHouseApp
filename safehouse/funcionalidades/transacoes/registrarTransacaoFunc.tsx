@@ -1,4 +1,8 @@
 //componente: Função de registro de transação, usado separadamente para reutilzação e organização
+//funções
+//importa a busca de pessoa
+import { BuscarPessoa } from "../pessoas/buscarPessoa";
+
 //async define o método como assincrono
 //os parametros servem para moldar o corpo da requisição
 export async function RegistrarTransacaoFunc(nome: string, descricao: string, valor: number, tipo: string, pessoaId: number) {
@@ -14,6 +18,14 @@ export async function RegistrarTransacaoFunc(nome: string, descricao: string, va
         "Tipo": tipo,
         //ID da pessoa escolhida
         "PessoaId": pessoaId,
+    }
+
+    //busca a pessoa escolhida na transação
+    const pessoaEscolhida = await BuscarPessoa(pessoaId);
+    //verifica com a coluna do BD se a pessoa pode ter receita
+    if (!pessoaEscolhida.podeTerReceita) {
+        alert("Não pode registrar transações de receita para menores de 18 anos.");
+        return;
     }
 
     //usa o 'then' para aguardar o retorno que o fetch traz (nesse caso do POST o tipo é uma resposta ou seja o status da requisição, por isso podemos usar resposta.Ok())

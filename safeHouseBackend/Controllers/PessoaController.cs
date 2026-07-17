@@ -92,8 +92,16 @@ namespace safeHouseBackend.Controllers
             }
 
             //altera apenas receitas e despesas
-            pessoa.Receitas = pessoaNova.Receitas;
-            pessoa.Despesas = pessoaNova.Despesas;
+
+            if (pessoaNova.Receitas != 0)
+            {
+                pessoa.Receitas = pessoaNova.Receitas;
+            } 
+
+            if (pessoaNova.Despesas != 0)
+            {
+                pessoa.Despesas = pessoaNova.Despesas;
+            }
 
             //espera salvar as mudanças feitas
             await _context.SaveChangesAsync();

@@ -64,6 +64,32 @@ export function ConsultarTotais() {
     //define o tipo de useState como number useState<number>
     //define que esse number começa com o valor 0 useState<number>(0)
     const [ total, definirTotal ] = useState<number>(0);
+
+    //usa o useEffect para chamar apenas uma vez o método
+    useEffect(() => {
+        //define variáveis locais para somar as receitas e despesas totais
+        var receitasAcumulativas = 0;
+        var despesasAcumulativas = 0;
+
+        //usa o forEach para percorrer cada transacao do total de transacoes
+        transacoes.forEach(transacao => {
+            //verifica o tipo de transacao para saber se é receita ou despesa
+            if (transacao.tipo?.toLowerCase().trim() === "receita") {
+                //soma cumulativa de receita
+                receitasAcumulativas += transacao.valor || 0;
+            } else {
+                //soma cumulativa de despesa
+                despesasAcumulativas += transacao.valor || 0;
+            }
+
+            //define a receita com o useState
+            definirReceitasTotal(receitasAcumulativas);
+            //define a despesa com o useState
+            definirDespesasTotal(despesasAcumulativas);
+            //define o total com o useState
+            definirTotal(receitasAcumulativas - despesasAcumulativas);
+        });
+    }, [transacoes]);
     
     //return padrao do elemento html do componente
     return(
@@ -102,11 +128,11 @@ export function ConsultarTotais() {
                 {/* foi criado uma divisão com flex-col para que os filhos se separem em colunas, justify-center garante a centralidade. O uso de % sempre referencia o elemento pai nesse caso do uso do padding é a largura. acesse 'page.tsx' para entender melhor. */}
                 <div className="w-[300px] h-[120px] rounded-[15px] flex flex-col justify-center pl-[1%]">
                     {/* o h3 é um titulo com menos relevancia que h1 e h2 suas propriedades definem como ele aparece. A fonte importada para o projeto é a Josefin sans para verificar a importação deve checar 'layout.tsx' */}
-                    <h3 className="font-[Josefin_Sans] text-[20px] text-white font-regular tracking-[0.085rem]"><b>Receitas:</b> R$ {}</h3>
+                    <h3 className="font-[Josefin_Sans] text-[20px] text-white font-regular tracking-[0.085rem]"><b>Receitas:</b> R$ {receitasTotal}</h3>
                     {/* o h3 é um titulo com menos relevancia que h1 e h2 suas propriedades definem como ele aparece. A fonte importada para o projeto é a Josefin sans para verificar a importação deve checar 'layout.tsx' */}
-                    <h3 className="font-[Josefin_Sans] text-[20px] text-white font-regular tracking-[0.085rem]"><b>Despesas:</b> R$ {}</h3>
+                    <h3 className="font-[Josefin_Sans] text-[20px] text-white font-regular tracking-[0.085rem]"><b>Despesas:</b> R$ {despesasTotal}</h3>
                     {/* o h3 é um titulo com menos relevancia que h1 e h2 suas propriedades definem como ele aparece. A fonte importada para o projeto é a Josefin sans para verificar a importação deve checar 'layout.tsx' */}
-                    <h3 className="font-[Josefin_Sans] text-[25px] text-white font-regular tracking-[0.085rem]"><b>Saldo:</b> R$ {}</h3>
+                    <h3 className="font-[Josefin_Sans] text-[25px] text-white font-regular tracking-[0.085rem]"><b>Saldo:</b> R$ {total}</h3>
                 </div>
             </div>
         </div>

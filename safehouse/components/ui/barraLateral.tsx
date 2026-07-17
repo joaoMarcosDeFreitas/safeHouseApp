@@ -15,7 +15,7 @@ export function BarraLateral({ aoClicar }: { aoClicar: (botaoClicado: string) =>
 
             {/* é criado uma divisão com o componente BotaoBarraLateral que serve como molde para os botões de navegação. é usado flex-col para que os filhos se separem em colunas e items-center garante a centralidade */}
             <div className="flex flex-col gap-[23px] items-center">
-                {/* Para cada botão, é passado o atributo aoClicar que é pedido no componente, seu valor é exatamente o parametro deste componente, com o parametro interno de string indicando qual o valor que vai ser passado em 'telaAtual'. paraentender melhor acesse 'page.tsx' e 'botaoBarraLateral.tsx' */}
+                {/* Para cada botão, é passado o atributo aoClicar que é pedido no componente, seu valor é exatamente o parametro deste componente, com o parametro interno de string indicando qual o valor que vai ser passado em 'telaAtual'. paraentender melhor acesse 'page.tsx' e 'botaoBarraLateral. */}
                 <BotaoBarraLateral texto="Registrar Pessoa" aoClicar={() => aoClicar("registrarPessoa")}/>
                 <BotaoBarraLateral texto="Excluir Pessoa" aoClicar={() => aoClicar("excluirPessoa")}/>
                 <BotaoBarraLateral texto="Registrar Transação" aoClicar={() => aoClicar("registrarTransacao")}/>

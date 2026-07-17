@@ -16,7 +16,7 @@ Este é o back-end do projeto para controle de gastos financeiros de casas. Perm
 	- **Entity Framework Core:** deve baixar para que o projeto rode sem problemas.
 	- **SQLite:** Junto com o EF Core garantem clareza na comunicação front-back e persistência de dados ao fechar e abrir a aplicação.
 
-## 3. Regras
+## 3. Regras 📃
 
 - Conforme solicitado existem regras para atuação no projeto:
 	- **Pessoas:**
@@ -29,7 +29,7 @@ Este é o back-end do projeto para controle de gastos financeiros de casas. Perm
 		- Impossibilidade de menores de 18 criarem receitas (apenas despesas).
 		- Não pode registrar transação sem ter pessoa para associar.
 
-## 4. Resumo de uso das tecnologias do back-end:
+## 4. Resumo de uso das tecnologias do back-end ☝🏻
 
 - **.NET 9 (C#)**
 - **ASP.NET Core Web API**

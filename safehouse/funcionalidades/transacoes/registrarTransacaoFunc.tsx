@@ -2,6 +2,8 @@
 //funções
 //importa a busca de pessoa
 import { BuscarPessoa } from "../pessoas/buscarPessoa";
+//importa a atualização de pessoa
+import { AtualizarPessoa } from "../pessoas/atualizarPessoa";
 
 //async define o método como assincrono
 //os parametros servem para moldar o corpo da requisição
@@ -49,4 +51,7 @@ export async function RegistrarTransacaoFunc(nome: string, descricao: string, va
             alert("Erro ao registrar transação, tente novamente.");
         }
     });
+
+    //atualiza a pessoa com a receita/despesa atribuida na transação
+    AtualizarPessoa(pessoaId, tipo.toLowerCase().trim(), valor);
 }
